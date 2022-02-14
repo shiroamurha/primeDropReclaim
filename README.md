@@ -1,5 +1,5 @@
 # primeDropReclaim
-it is a script build to automatize checking if lol's primegaming drop is already claimable 
+it is a script built to automatize checking if lol's primegaming drop is already claimable 
 <br>
 <br>
 <h3>step 1:</h3>
