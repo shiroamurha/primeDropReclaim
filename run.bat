@@ -1,2 +1,2 @@
-Scripts\python.exe dropVerifier_dist.py
+Scripts\python.exe main.py
 pause
