@@ -1,6 +1,8 @@
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 
+from time import sleep
+
 own_session_cookies = [
 
 	{
@@ -66,15 +68,24 @@ own_session_cookies = [
 
 
 
-with sync_playwright() as driver:
-    browser = driver.webkit.launch()
-    context = browser.new_context()
-    page = context.new_page()
-    page.goto("https://gaming.amazon.com/")
-    
-    context.add_cookies(own_session_cookies)
-    
-    html = BeautifulSoup(page.content(), 'html.parser').prettify()
-    open('home.html', 'w').write(html)
-    
-    browser.close()
+playwright = sync_playwright().start() 
+browser = playwright.webkit.launch()
+context = browser.new_context()
+page = context.new_page()
+
+page.goto("https://gaming.amazon.com/")
+
+context.add_cookies(own_session_cookies)
+sleep(5)
+
+page.goto("https://gaming.amazon.com/home")
+sleep(20)
+
+page.locator(":nth_match(a:aria-label='League of Legends: Prime Gaming Capsule'], 4)").click()
+sleep(5)
+
+html = BeautifulSoup(page.content(), 'html.parser').prettify()
+open('home.html', 'w').write(html)
+
+browser.close()
+playwright.stop()
