@@ -1,9 +1,11 @@
 from playwright.sync_api import sync_playwright
+from time import sleep
 import json
 
 
 
 isClaimed = bool()
+
 # page and session (context) initiation 
 print('Initializing...', end='    ')
 playwright = sync_playwright().start() 
@@ -11,11 +13,21 @@ browser = playwright.webkit.launch()
 context = browser.new_context()
 page = context.new_page()
 
+
 # cookie adding management
 page.goto("https://gaming.amazon.com/")
-context.add_cookies(json.load(open('cookies.json', 'r')))
+
+context.add_cookies(
+	json.load(
+		open(
+			'cookies.json', 
+			'r'
+		)
+	)
+)
 page.goto("https://gaming.amazon.com/home")
 print('Done.\n')
+
 
 ##
 ##
@@ -33,6 +45,7 @@ locator = page.locator(
 if locator == 'Claimed':
 	isClaimed = True
 	print('Drop already claimed.')
+	sleep(3)
 else:
 	isClaimed = False
 
@@ -50,6 +63,7 @@ if not isClaimed:
     )
 
     print(' Reclaim successfully done.')
+    sleep(3)
 #print(f'it is {isClaimed}')
 
 
