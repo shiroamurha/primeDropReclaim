@@ -4,7 +4,7 @@ it is a python program built to automatize checking if lol's primegaming drop is
 <h3>Step 1:</h3>
 Download the lastest release and unpack it.
 <h3>Step 2:</h3> 
-Export your own session cookies on gaming.amazon.com. I used a extension called EditThisCookie, it's very easy to use, just select the extension icon on the top of the browser (alerady inside the gaming amazon page), click on "export cookies", then paste it on cookies.json.
+Export your own session cookies on gaming.amazon.com. I used a extension called EditThisCookie, it's very easy to use, just select the extension icon on the top of the browser (alerady inside the gaming amazon page), click on "export cookies", then paste it on cookies.json. Remember that the only cookies needed are already on json with no value (just empty str), putting any others may cause errors.
 <h3>Step 3:</h3>
 Run Drop Manager 2.0.exe at the same directory as cookies.json
 <h2>ㅤㅤㅤㅤNotes:</h2> 
